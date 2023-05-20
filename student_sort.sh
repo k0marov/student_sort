@@ -12,7 +12,7 @@ done
 
 awk '{print $1 " " $2 " " $3 " " (($4=="N") ? "Z" : $4)}' $filename | 
 	sort -k2nr -k3nr -k4 -k1 | 
-awk '{print $1 " " $2 " " $3 " " (($4=="Z") ? "N" : $4)}' $filename | 
-	head -n"$places" > "$output" 
+	head -n"$places" | 
+	awk '{print $1}' > "$output" 
 
 
