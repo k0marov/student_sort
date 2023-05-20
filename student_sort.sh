@@ -10,6 +10,17 @@ while getopts ":f:o:t:" ARG; do
   esac 
 done 
 
+if [[ ! -f $output ]] 
+then
+	touch $output 
+fi 
+
+
+sort -k2nr -k3nr -k4 -k1 $filename | head -n"$places" > "$output" 
+
 echo "$filename" 
 echo "$places" 
 echo "$output" 
+
+
+
