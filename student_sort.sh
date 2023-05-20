@@ -5,12 +5,10 @@ while getopts ":f:o:t:" ARG; do
     t) places="$OPTARG" ;; 
     f) filename="$OPTARG" ;; 
     o) output="$OPTARG" ;; 
-    :) echo "Argument missing!" ;; 
-    \?) echo "Unknown argument!" ;; 
   esac 
 done 
 
-awk '{print $1 " " $2 " " $3 " " (($4=="N") ? "Z" : $4)}' $filename | 
+awk '{printf "%s %s %s %s\n", $1, $2, $3, (($4=="N") ? "Z" : $4)}' $filename | 
 	sort -k2nr -k3nr -k4 -k1 | 
 	head -n"$places" | 
 	awk '{print $1}' > "$output" 
