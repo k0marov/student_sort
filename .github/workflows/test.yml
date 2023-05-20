@@ -26,7 +26,6 @@ jobs:
 
       - name: Run all tests 
         run: |
-          chmod +x students_sort.sh 
           cd tests 
           chmod +x run_all_tests.sh 
           ./run_all_tests.sh 
