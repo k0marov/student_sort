@@ -15,12 +15,8 @@ then
 	touch $output 
 fi 
 
-
-sort -k2nr -k3nr -k4 -k1 $filename | head -n"$places" > "$output" 
-
-echo "$filename" 
-echo "$places" 
-echo "$output" 
-
+awk '{print $1 " " $2 " " $3 " " (($4=="N") ? "Z" : $4)}' $filename | 
+	sort -k2nr -k3nr -k4 -k1 | 
+	head -n"$places" > "$output" 
 
 
