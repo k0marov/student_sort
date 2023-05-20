@@ -10,11 +10,6 @@ while getopts ":f:o:t:" ARG; do
   esac 
 done 
 
-if [[ ! -f $output ]] 
-then
-	touch $output 
-fi 
-
 awk '{print $1 " " $2 " " $3 " " (($4=="N") ? "Z" : $4)}' $filename | 
 	sort -k2nr -k3nr -k4 -k1 | 
 	head -n"$places" > "$output" 
